@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class Main extends JFrame {
 	public Main() {
-		setTitle ("Naive Chip and The Neighbours");
+		setTitle ("Credit Card Validator");
 		setSize (800,590);
 		setLocation (270,60);
 		setResizable(false);

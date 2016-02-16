@@ -1,5 +1,9 @@
 package luhn;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -9,6 +13,7 @@ import java.util.Set;
 public class Luhn {
 	FileReader reader;
 	private List<Integer> counter = new ArrayList<Integer>();
+	private List<String> valid = new ArrayList<String>();
 	
 	public static void main(String args[]) {
 		Luhn tes = new Luhn("input.txt");
@@ -18,6 +23,12 @@ public class Luhn {
 	public Luhn(String filename) {
 		reader = new FileReader(filename);
 		validateAll();
+		try {
+			writeToFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean isValid(String cardNumber) {
@@ -62,7 +73,7 @@ public class Luhn {
 				while (iterator.hasNext()){
 					String s = iterator.next().toString();
 					if (isValid(s)) {
-						System.out.println(s);
+						valid.add(s);
 						count++;
 					}
 				}
@@ -70,23 +81,45 @@ public class Luhn {
 				
 			} else {
 				if (isValid(str.toString())) {
+					valid.add(str.toString());
 					count++;
-					System.out.println(str.toString());
+					//System.out.println(str.toString());
 				}
 			}
 			counter.add(count);
-			System.out.println(count);
+			//System.out.println(count);
 		}
 	}
 	
 	public StringBuilder getOutput() {
 		StringBuilder str = new StringBuilder();
-		str.append("Output:\n");
+		str.append("\t\t\t\tOutput:\n");
 		for (int i=0; i<counter.size(); i++) {
-			str.append("Kartu " + String.valueOf(i+1) + "> " + counter.get(i) +"\n");
+			str.append("\t\t\t\tKartu " + String.valueOf(i+1) + "> " + counter.get(i) +"\n");
 		}
-		//System.out.println(str);
 		return str;
+	}
+	
+	public void writeToFile() throws IOException {
+		FileWriter fw = new FileWriter(new File("output.txt"));
+		BufferedWriter bw = new BufferedWriter(fw);
+		
+		StringBuilder str = new StringBuilder();
+		str.append("Output:\n");
+		
+		int k = 0;
+		for (int i=0; i<counter.size(); i++) {
+			str.append("Kartu " + String.valueOf(i+1) + "> " + counter.get(i) +"\n"); 
+			int temp = k;
+			while (k < temp+counter.get(i)) {
+				//System.out.println(k +" " + str + " "+ valid.size());
+				str.append("\t"+valid.get(k)+"\n");
+				k++;
+			}
+		}
+		
+		bw.write(str.toString());
+		bw.close();
 	}
 	
 	public List <Integer> getCounter() {

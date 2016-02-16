@@ -156,7 +156,7 @@ public class Start extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			//empty the container first
-			attrList.setText(luhn.getOutput().toString());
+			attrList.setText("\n\n" +luhn.getOutput().toString());
 			 
 			}
        	});
