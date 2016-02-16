@@ -8,9 +8,11 @@ import java.util.Set;
 
 public class Luhn {
 	FileReader reader;
+	private List<Integer> counter = new ArrayList<Integer>();
 	
 	public static void main(String args[]) {
 		Luhn tes = new Luhn("input.txt");
+		tes.getOutput();
 	}
 	
 	public Luhn(String filename) {
@@ -55,13 +57,12 @@ public class Luhn {
 					}
 					temp.add(str.toString());
 				}
-				for (String s: temp) {
-					System.out.println(s);
-				}
 				
 				Iterator iterator = temp.iterator(); 
 				while (iterator.hasNext()){
-					if (isValid(iterator.next().toString())) {
+					String s = iterator.next().toString();
+					if (isValid(s)) {
+						System.out.println(s);
 						count++;
 					}
 				}
@@ -70,9 +71,25 @@ public class Luhn {
 			} else {
 				if (isValid(str.toString())) {
 					count++;
+					System.out.println(str.toString());
 				}
 			}
+			counter.add(count);
 			System.out.println(count);
 		}
+	}
+	
+	public StringBuilder getOutput() {
+		StringBuilder str = new StringBuilder();
+		str.append("Output:\n");
+		for (int i=0; i<counter.size(); i++) {
+			str.append("Kartu " + String.valueOf(i+1) + "> " + counter.get(i) +"\n");
+		}
+		//System.out.println(str);
+		return str;
+	}
+	
+	public List <Integer> getCounter() {
+		return counter;
 	}
 }

@@ -25,9 +25,9 @@ public class FileReader {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for (String s: cardNumbers) {
-			System.out.println(s);
-		}
+		//for (String s: cardNumbers) {
+		//	System.out.println(s);
+		//}
 	}
 	
 	public void readFile() throws IOException {
