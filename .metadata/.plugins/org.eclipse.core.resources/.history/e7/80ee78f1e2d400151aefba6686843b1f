@@ -13,6 +13,10 @@ public class FileReader {
 	private int cCount=0; //jumlah credit card
 	private String filename = new String();
 	
+	public static void main(String args[]) {
+		FileReader fr = new FileReader("input.txt");
+	}
+	
 	public FileReader(String fName) {
 		filename = fName;
 		try {

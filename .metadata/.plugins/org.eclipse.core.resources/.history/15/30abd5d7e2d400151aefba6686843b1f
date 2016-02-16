@@ -9,9 +9,13 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class FileReader {
-	private List<String> cardNumbers = new ArrayList<String>(); //list seluruh nomor credit card
-	private int cCount=0; //jumlah credit card
+	private List<String> cardNumbers = new ArrayList<String>();
+	private int cCount=0;
 	private String filename = new String();
+	
+	public static void main(String args[]) {
+		FileReader fr = new FileReader("input.txt");
+	}
 	
 	public FileReader(String fName) {
 		filename = fName;
@@ -39,6 +43,7 @@ public class FileReader {
 				break;
 			}
 		}
+		
 		
 		//menyimpan nomor kartu sebanyak cCount
 		int i=0;
