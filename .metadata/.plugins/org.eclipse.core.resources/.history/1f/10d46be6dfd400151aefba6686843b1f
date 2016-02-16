@@ -16,7 +16,7 @@ public class Luhn {
 	private List<String> valid = new ArrayList<String>();
 	
 	public static void main(String args[]) {
-		Luhn tes = new Luhn("input5.txt");
+		Luhn tes = new Luhn("input1.txt");
 		tes.getOutput();
 	}
 	
