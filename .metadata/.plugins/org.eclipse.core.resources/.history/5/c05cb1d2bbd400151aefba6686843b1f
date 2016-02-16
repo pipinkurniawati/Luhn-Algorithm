@@ -1,0 +1,62 @@
+package luhn;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Luhn {
+	FileReader reader;
+	
+	public Luhn(String filename) {
+		reader = new FileReader(filename);
+	}
+	
+	public boolean isValid(String cardNumber) {
+            int sum = 0;
+            boolean alternate = false;
+            for (int i = cardNumber.length() - 1; i >= 0; i--) {
+                    int n = Integer.parseInt(cardNumber.substring(i, i + 1));
+                    if (alternate) {
+                            n *= 2;
+                            if (n > 9) {
+                                    n = (n % 10) + 1;
+                            }
+                    }
+                    sum += n;
+                    alternate = !alternate;
+            }
+            return (sum % 10 == 0);
+    }
+	
+	public void validateAll() {
+		for (int i=0; i<reader.getCCount(); i++) {
+			int count=0;
+			StringBuilder str = new StringBuilder(reader.getCardNumbers().get(i));
+			List<Integer> index  = new ArrayList<Integer>();
+			
+			for (int j=0; j<str.length(); j++) {
+				if ((int)str.charAt(j)==63) {
+					index.add(j);
+				}
+			}
+			
+			if (!index.isEmpty()) {
+				for (int j=0; j<index.size(); j++) {
+					str.setCharAt(index.get(j), '1');
+				}
+				if (isValid(str.toString())) {
+					count++;
+				}
+				
+				//menghitung kemungkinan kombinasi lain
+				for (int j=index.size(); j>=0; j--) {
+					
+				}
+				
+			} else {
+				if (isValid(str.toString())) {
+					count++;
+				}
+			}
+		}
+	}
+}
