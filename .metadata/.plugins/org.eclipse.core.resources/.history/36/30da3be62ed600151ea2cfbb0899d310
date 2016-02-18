@@ -99,8 +99,6 @@ public class Start extends JPanel {
           attrList.setSize(750, 350);
           attrList.setLineWrap(true);
           attrList.setWrapStyleWord(true);
-          Font font = new Font("Verdana", Font.BOLD, 16);
-          attrList.setFont(font);
           JScrollPane scroll = new JScrollPane (attrList, 
         		   JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
           

@@ -95,9 +95,9 @@ public class Luhn {
 	//menampilkan hasil validasi ke layar
 	public StringBuilder getOutput() {
 		StringBuilder str = new StringBuilder();
-		str.append("\t\t          Output:\n");
+		str.append("\t\t\tOutput:\n");
 		for (int i=0; i<counter.size(); i++) {
-			str.append("\t\t          Kartu " + String.valueOf(i+1) + "> " + counter.get(i) +"\n");
+			str.append("\t\t\tKartu " + String.valueOf(i+1) + "> " + counter.get(i) +"\n");
 		}
 		return str;
 	}
